@@ -1,0 +1,32 @@
+<html>
+
+<head>
+  <title>HI</title>
+  <script src="https://thunkable.github.io/webviewer-extension/thunkableWebviewerExtension.js"
+    type="text/javascript"></script>
+
+</head>
+
+
+<body>
+  <button id="upload_widget" class="cloudinary-button">Upload files</button>
+</body>
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var myWidget = cloudinary.createUploadWidget({
+    cloudName: 'ddutbmzoh',
+    uploadPreset: 'Apiupload'
+  }, (error, result) => {
+    if (!error && result && result.event === "success") {
+      ThunkableWebviewerExtension.postMessage(result.info.url)
+    }
+  }
+  )
+
+  document.getElementById("upload_widget").addEventListener("click", function () {
+    myWidget.open();
+  }, false);
+</script>
+
+</html>
